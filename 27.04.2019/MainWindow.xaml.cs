@@ -42,7 +42,7 @@ namespace _27._04._2019
                     Seviyye =new Seviyye()
                     {
                         Id=1,
-                        Seviyye_=3,
+                        Seviyye_="3",
                     },
                     Xidmetnovu =new XidmetNovu()
                     {
@@ -63,7 +63,7 @@ namespace _27._04._2019
                     Seviyye =new Seviyye()
                     {
                         Id=2,
-                        Seviyye_=5,
+                        Seviyye_="5",
                     },
                     Xidmetnovu =new XidmetNovu()
                     {
@@ -95,12 +95,12 @@ namespace _27._04._2019
                 new Seviyye()
                 {
                     Id=1,
-                    Seviyye_=3,
+                    Seviyye_="3",
                 },
                 new Seviyye()
                 {
                     Id=2,
-                    Seviyye_=5,
+                    Seviyye_="5",
                 },
             };
 

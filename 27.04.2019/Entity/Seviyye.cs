@@ -9,6 +9,6 @@ namespace _27._04._2019.Entity
     class Seviyye
     {
         public int Id { get; set; }
-        public int Seviyye_ { get; set; }
+        public string Seviyye_ { get; set; }
     }
 }

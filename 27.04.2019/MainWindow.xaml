@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="250" Width="600">
     <Grid>
+
+        
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="169*"/>
             <ColumnDefinition Width="127*"/>
@@ -19,9 +23,10 @@
         </Grid.RowDefinitions>
 
         <DockPanel Height="31" Background="Gray" Grid.Row="0" Width="600" VerticalAlignment="Top" Grid.ColumnSpan="2" >
-
+            <Button Width="100" Command="{Binding pDF }" Content="PDF" HorizontalAlignment="Right" Margin="400,0,0,0"></Button>
+            <Button Width="100" Command="{Binding excell }" Content="EXCELL" HorizontalAlignment="Right" ></Button>
         </DockPanel>
-        <DockPanel  Height="100"  Background="LightGray" Grid.Row="1" Width="600" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+        <DockPanel  Height="190"  Background="LightGray" Grid.Row="1" Width="600" VerticalAlignment="Top" Grid.ColumnSpan="2" >
 
             <StackPanel>
                 <WrapPanel>
@@ -130,7 +135,24 @@
 
 
                 </Button>
+                <TextBox Name="Search" Height="30" Margin="0,20,0,0" Text="{Binding search,Mode=TwoWay}"></TextBox>
+                <Button  Height="30" Margin="0,10,0,0" Content="Search" Command="{Binding Search_}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text.Length, ElementName=Search, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                            <Setter Property="IsEnabled" Value="True"></Setter>                            
+                            
+                        </Style>
 
+
+                    </Button.Style>
+                    
+                    
+                </Button>
             </StackPanel>
             <Button Height="30" Width="100" Content="Deyis"></Button>
 
@@ -140,11 +162,24 @@
         <TextBlock  Height="30" Text="Qruplar" FontWeight="Bold" FontFamily="30"  Width="100" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="246,0,246,1">
         </TextBlock>
 
-        <ListView Name="List" Height="90"  SelectedItem="{Binding selectQruplar }" ItemsSource="{Binding groups}" Grid.Row="1"  VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+        <ListView Name="List" Height="90" Width="500" HorizontalAlignment="Left"  SelectedItem="{Binding selectQruplar }"  Grid.Row="1"  VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+                    
+            <ListView.Style>
+                <Style TargetType="{x:Type ListView}">
 
+
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=Search, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="ItemsSource" Value="{Binding groups}"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="ItemsSource" Value="{Binding group}"></Setter>
+                </Style>
+            </ListView.Style>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="No" Width="30" >
+                    <GridViewColumn Header="No" Width="40" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Padding="5,0" Text="{Binding Id}" TextAlignment="Center" VerticalAlignment="Center">
@@ -186,7 +221,7 @@
                         </GridViewColumn.CellTemplate>
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Qeyd" Width="180">
+                    <GridViewColumn Header="Qeyd" Width="90">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Padding="5,0" Text="{Binding Qeyd}" TextAlignment="Center" VerticalAlignment="Center">

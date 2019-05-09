@@ -10,15 +10,19 @@ using System.Threading.Tasks;
 
 namespace _27._04._2019.ViewModel
 {
-    class QruplarView:BaseView
+    class QruplarView : BaseView
     {
         public ElaveEt Add => new ElaveEt(this);
         public Deyis Update => new Deyis(this);
         public Imtina imtina => new Imtina(this);
+        public Search Search_ => new Search(this);
+        public PDF pDF => new PDF(this);
+        public Excell excell => new Excell(this);
         public QruplarView()
         {
             CurrentQruplar = new Qruplar();
             SelectQruplar = new Qruplar();
+            
         }
         private Qruplar CurrentQruplar;
         private int State;
@@ -85,6 +89,45 @@ namespace _27._04._2019.ViewModel
                 OnpropertyChanged(new PropertyChangedEventArgs("groups"));
             }
         }
+
+        private ObservableCollection<Qruplar> Group;
+        public ObservableCollection<Qruplar> group
+        {
+            get
+            {
+                return Group;
+            }
+            set
+            {
+
+                Group = value;
+
+                OnpropertyChanged(new PropertyChangedEventArgs("group"));
+            }
+        }
+
+
+
+
+
+
+
+
+        string Search;
+        public string search{
+
+            get{
+                return Search;
+           }
+            set
+            {
+                Search = value;
+                
+                OnpropertyChanged(new PropertyChangedEventArgs(nameof(search)));
+            }
+
+}
+
 
         public List<Filial> Filials { get; set; }
         public List<XidmetNovu> XidmetNovu { get; set; }
