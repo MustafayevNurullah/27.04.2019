@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_27._04._2019"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="600">
+        Title="MainWindow" Height="250" MaxHeight="250" MinHeight="250" Width="600" MinWidth="600" MaxWidth="600">
     <Grid>
 
         
